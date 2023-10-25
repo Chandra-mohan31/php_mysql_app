@@ -15,25 +15,13 @@ pipeline {
 
             stage('Building Docker Image') {
                 steps {
-                    script {
-                        dockerImage = docker.build registry
-                    }
+                    sh "docker-compose up --build"
                 }
             }
 
-            stage('Deploying Docker Image to Dockerhub') {
-                steps {
-                    script {
-                        docker.withRegistry('', registryCredential) {
-                        dockerImage.push()
-                        }
-                    }
-                }
-            }
-
-            stage('Cleaning Up') {
+            stage('Finishing Up') {
                 steps{
-                  sh "docker rmi --force $registry"
+                  sh "echo 'completed deploying the application'"
                 }
             }
         }
