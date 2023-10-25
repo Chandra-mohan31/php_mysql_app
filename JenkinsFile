@@ -9,7 +9,7 @@ pipeline {
     stages {
             stage('Cloning our Git') {
                 steps {
-                git branch: 'main', credentialsId: 'github', url: ''
+                git branch: 'main', credentialsId: 'github', url: 'https://github.com/Chandra-mohan31/php_mysql_app'
                 }
             }
 
